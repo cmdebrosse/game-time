@@ -30,11 +30,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email,
-    },
+      email: req.body.email
+    }
   }).then((userDbData) => {
     if (!userDbData) {
       res.status(404).json({ message: "No user found" });
@@ -52,6 +52,8 @@ router.post("/login", (req, res) => {
       req.session.user_id = userDbData.id;
       req.session.username = userDbData.username;
       req.session.loggedIn = true;
+
+      res.json({ user: userDbData, message: 'You are now logged in!' });
     });
   });
 });

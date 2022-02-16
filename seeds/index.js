@@ -1,18 +1,18 @@
 const seedUsers = require("./user-seeds");
 const seedPosts = require("./post-seeds");
-const seedPets = require("./pet-seeds");
+const seedGame = require("./game-seeds");
 const seedComments = require("./comment-seeds");
 const sequelize = require("../config/connection");
 
 const seedAll = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
   console.log("\n----- DATABASE SYNCED -----\n");
 
   await seedUsers();
   console.log("\n----- USERS SEEDED -----\n");
 
-  await seedPets();
-  console.log("\n----- PETS SEEDED -----\n");
+  await seedGame();
+  console.log("\n----- GAMES SEEDED -----\n");
 
   await seedPosts();
   console.log("\n----- POSTS SEEDED -----\n");

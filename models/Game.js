@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Pet extends Model {}
+class Game extends Model {}
 
-Pet.init(
+Game.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,28 +11,21 @@ Pet.init(
       autoIncrement: true,
       allowNull: false,
     },
-    pet_name: {
+    game_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [2, 16],
       },
     },
-    pet_age: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
-    },
-    pet_breed: {
+    game_type: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [4, 20],
       },
     },
-    pet_desc: {
+    game_desc: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -53,8 +46,8 @@ Pet.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "pet",
+    modelName: "game",
   }
 );
 
-module.exports = Pet;
+module.exports = Game;

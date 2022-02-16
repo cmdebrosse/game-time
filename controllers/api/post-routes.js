@@ -5,7 +5,7 @@ const { User, Post } = require("../../models");
 router.post("/", (req, res) => {
   Post.create({
     post_desc: req.body.postDesc,
-    pet_id: req.body.petId,
+    game_id: req.body.gameId,
     user_id: req.body.userId,
   })
     .then((postDbData) => {

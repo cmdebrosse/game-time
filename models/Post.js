@@ -25,11 +25,11 @@ Post.init(
         key: "id",
       },
     },
-    pet_id: {
+    game_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-          model: 'pet',
+          model: 'game',
           key: 'id'
       },
     }, 

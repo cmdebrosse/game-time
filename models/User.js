@@ -38,16 +38,16 @@ User.init(
     },
     profile_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len: [2, 15],
+        len: [4],
       },
     },
     profile_bio: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len: [10, 140],
+        len: [4],
       },
     },
   },
