@@ -15,21 +15,21 @@ Game.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2, 16],
+        len: [2],
       },
     },
     game_type: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4, 20],
+        len: [2],
       },
     },
     game_desc: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [20, 120],
+        len: [2],
       },
     },
     user_id: {

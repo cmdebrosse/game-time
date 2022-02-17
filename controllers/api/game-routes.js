@@ -1,13 +1,25 @@
 const router = require("express").Router();
 const { Game } = require("../../models");
 
+// GET /api/users
+router.get("/", (req, res) => {
+  Game.findAll({
+    
+  })
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // Route to Create Game
 router.post("/", (req, res) => {
   Game.create({
-    game_name: req.body.gameName,
-    game_type: req.body.gameType,
-    game_desc: req.body.gameDesc,
-    user_id: req.body.userId,
+    game_name: req.body.game_name,
+    game_type: req.body.game_type,
+    game_desc: req.body.game_desc,
+    user_id: req.body.user_id,
   })
     .then((gameDbData) => {
       res.json(gameDbData);

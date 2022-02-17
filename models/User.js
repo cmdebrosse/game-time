@@ -36,20 +36,6 @@ User.init(
         len: [4],
       },
     },
-    profile_name: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [4],
-      },
-    },
-    profile_bio: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [4],
-      },
-    },
   },
   {
     hooks: {
