@@ -30,11 +30,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email
-    }
+      email: req.body.email,
+    },
   }).then((userDbData) => {
     if (!userDbData) {
       res.status(404).json({ message: "No user found" });
@@ -53,9 +53,19 @@ router.post('/login', (req, res) => {
       req.session.username = userDbData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: userDbData, message: 'You are now logged in!' });
+      res.json({ user: userDbData, message: "You are now logged in!" });
     });
   });
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 router.put("/:id", (req, res) => {
@@ -78,7 +88,6 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// do we need delete user?
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {

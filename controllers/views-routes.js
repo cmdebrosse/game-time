@@ -1,25 +1,25 @@
-// const router = require("express").Router();
-// const { User, Post, Game } = require("../models");
+const router = require("express").Router();
+const { User, Post, Game } = require("../models");
 
-// //Get login page
-// router.get("/login", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
+//Get login page
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-//   res.render("login");
-// });
+  res.render("login");
+});
 
-// //Get signup page
-// router.get("/signup", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
+//Get signup page
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-//   res.render("signup");
-// });
+  res.render("signup");
+});
 
 // //Get all users
 // router.get("/profile/", (req, res) => {
