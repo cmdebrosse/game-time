@@ -1,10 +1,31 @@
 const router = require("express").Router();
-const { Game } = require("../../models");
+const { Game , User, Comment } = require("../../models");
 
 // GET /api/users
 router.get("/", (req, res) => {
   Game.findAll({
-    
+    attributes: [
+      'id',
+      'game_name',
+      'game_type',
+      'game_desc',
+      'created_at'
+    ],
+    order: [['created_at', 'DESC']], 
+    include: [
+      {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'user_id','game_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -12,7 +33,40 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
+router.get("/:id", (req, res) => {
+  Game.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'game_name',
+      'game_type',
+      'game_desc',
+      'created_at'
+    ],
+    order: [['created_at', 'DESC']], 
+    include: [
+      {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'user_id','game_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 // Route to Create Game
 router.post("/", (req, res) => {
   Game.create({
