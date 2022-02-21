@@ -38,7 +38,7 @@ This is a social media app connecting athletes of all kinds to organize games, m
 
 ## Credits
 
-### Sandeep Vitalla
+### Sandeep Vittala
 
 GitHub Account: github.com/sandy3392
 
