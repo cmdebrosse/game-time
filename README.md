@@ -11,6 +11,7 @@ This is a social media app connecting athletes of all kinds to organize games, m
 ### Languages & Technologies Used
 
 - Node.js
+- Express
 - Sequelize
 - MySql
 - Handlebars
